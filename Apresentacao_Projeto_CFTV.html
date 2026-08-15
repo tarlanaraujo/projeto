@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Projeto CFTV IP — Icaraí de Amontada</title>
+    <meta name="description" content="Proposta profissional de instalação de sistema de câmeras de segurança IP para residência de alto padrão em Icaraí de Amontada, CE.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #07090F;
+            --bg-secondary: #0D1117;
+            --bg-card: rgba(17, 24, 39, 0.65);
+            --border-card: rgba(99, 115, 145, 0.2);
+            --accent-blue: #3B82F6;
+            --accent-cyan: #06B6D4;
+            --accent-emerald: #10B981;
+            --accent-violet: #8B5CF6;
+            --text-white: #F9FAFB;
+            --text-light: #E5E7EB;
+            --text-muted: #9CA3AF;
+            --text-dim: #6B7280;
+            --gradient-hero: linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%);
+            --gradient-accent: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            --glass-blur: blur(20px);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-light);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== BACKGROUND ========== */
+        .bg-ambient {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bg-ambient .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .orb-1 { top: -15%; left: -10%; width: 55vw; height: 55vw; background: rgba(59,130,246,0.18); }
+        .orb-2 { bottom: -20%; right: -15%; width: 60vw; height: 60vw; background: rgba(16,185,129,0.12); animation-delay: -8s; }
+        .orb-3 { top: 40%; left: 50%; width: 40vw; height: 40vw; background: rgba(139,92,246,0.08); animation-delay: -15s; }
+
+        @keyframes orbFloat {
+            0%   { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(4%, 6%) scale(1.15); }
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.25rem 3rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: var(--accent-blue);
+            padding: 0.45rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            animation: fadeDown 0.8s ease-out;
+        }
+
+        .hero-badge svg { flex-shrink: 0; }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 8vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 70%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeUp 0.8s ease-out 0.15s both;
+        }
+
+        .hero-sub {
+            font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.6rem;
+            background: var(--gradient-hero);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeUp 0.8s ease-out 0.45s both;
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.35);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            opacity: 0.35;
+            animation: bounce 2.5s infinite;
+        }
+
+        /* ========== SECTIONS ========== */
+        section {
+            padding: 4rem 0;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 560px;
+            margin-bottom: 2rem;
+        }
+
+        /* ========== CARDS ========== */
+        .cards-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        .cards-grid.cols-2 {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-hero);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+        .card:hover::before { opacity: 1; }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .card:hover .card-icon {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        .icon-blue   { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
+        .icon-cyan   { background: rgba(6,182,212,0.12);  color: var(--accent-cyan); }
+        .icon-green  { background: rgba(16,185,129,0.12); color: var(--accent-emerald); }
+        .icon-violet { background: rgba(139,92,246,0.12); color: var(--accent-violet); }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .card strong {
+            color: var(--text-light);
+        }
+
+        /* ========== FEATURE LIST (Metragens) ========== */
+        .feature-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.2rem;
+            transition: background 0.3s;
+        }
+        .feature-item:hover {
+            background: rgba(255,255,255,0.045);
+        }
+        .feature-dot {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+            background: var(--gradient-hero);
+        }
+        .feature-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.15rem;
+        }
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.55;
+        }
+
+        /* ========== PLANTA / BLUEPRINT ========== */
+        .blueprint-wrapper {
+            margin-top: 2rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+        .blueprint-header {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--border-card);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-white);
+        }
+        .blueprint-header svg { color: var(--accent-cyan); flex-shrink: 0; }
+        .blueprint-body {
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            background: rgba(255,255,255,0.02);
+        }
+        .blueprint-body img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ========== HIGHLIGHT / CTA BOX ========== */
+        .highlight-box {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.06), rgba(16,185,129,0.08));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        .highlight-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+        }
+        .highlight-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .highlight-box em {
+            color: var(--accent-cyan);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 3rem;
+        }
+        footer p {
+            color: var(--text-dim);
+            font-size: 0.78rem;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        /* ========== RESPONSIVE: TABLET+ ========== */
+        @media (min-width: 640px) {
+            .container { padding: 0 2rem; }
+            section { padding: 5rem 0; }
+            .cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .card { padding: 2rem; }
+            .card-icon { width: 56px; height: 56px; }
+            .feature-item { padding: 1.25rem 1.5rem; }
+            .highlight-box { padding: 2.5rem 2rem; }
+        }
+
+        /* ========== RESPONSIVE: DESKTOP ========== */
+        @media (min-width: 960px) {
+            section { padding: 6rem 0; }
+            .cards-grid.cols-2 { gap: 1.5rem; }
+            .card { padding: 2.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="bg-ambient">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+    <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Proposta Executiva
+    </div>
+
+    <h1>Projeto de CFTV IP<br>Profissional</h1>
+
+    <p class="hero-sub">
+        Solução de segurança em alta definição com infraestrutura totalmente oculta, para residência de alto padrão em <strong>Icaraí de Amontada, CE</strong>.
+    </p>
+
+    <a href="#contexto" class="hero-cta">
+        Ver Projeto Completo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </a>
+
+    <svg class="scroll-hint" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+</header>
+
+<main>
+
+    <!-- ==================== CONTEXTO ==================== -->
+    <section id="contexto">
+        <div class="container">
+            <span class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Visão Geral
+            </span>
+            <h2 class="section-title">Contexto do Projeto</h2>
+            <p class="section-desc">Entenda o escopo e os objetivos da instalação de segurança proposta.</p>
+
+            <div class="cards-grid cols-2">
+                <div class="card">
+                    <div class="card-icon icon-blue">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Localidade e Imóvel</h3>
+                    <p>Casa de <strong>alto padrão</strong> localizada em Icaraí de Amontada, CE. O imóvel possui dimensões de aproximadamente <strong>11,2 m de frente</strong> e <strong>30,38 m de comprimento lateral</strong>.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon icon-cyan">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3>Objetivo Principal</h3>
+                    <p>Instalação de um sistema de câmeras de segurança (<strong>CFTV IP</strong>) extremamente limpo e profissional, com foco total em cabos protegidos e <strong>nenhuma fiação exposta</strong>, preservando a estética do ambiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EQUIPAMENTOS ==================== -->
+    <section id="equipamentos">
+        <div class="container">
+            <span class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Tecnologia
+            </span>
+            <h2 class="section-title">Equipamentos Premium</h2>
+            <p class="section-desc">Todos os componentes selecionados para máxima durabilidade e desempenho no clima litorâneo.</p>
+
+            <div class="cards-grid cols-2">
+                <div class="card">
+                    <div class="card-icon icon-blue">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    </div>
+                    <h3>Câmeras e Gravador</h3>
+                    <p><strong>Intelbras Kit 4 Câmeras IP Full HD PoE — NVD 1404-P.</strong><br>Tecnologia PoE (energia e dados pelo mesmo cabo), garantindo alta resolução e estabilidade total de imagem.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon icon-violet">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </div>
+                    <h3>Armazenamento Otimizado</h3>
+                    <p><strong>HD WD Purple de 1 TB.</strong><br>Linha específica para CFTV, com gravação contínua 24/7. Garante <strong>até 7 dias</strong> de retenção das imagens com total segurança.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon icon-green">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h3>Acabamento Hermético</h3>
+                    <p><strong>Caixas de passagem VBOX herméticas.</strong><br>Isolamento absoluto contra maresia e chuva, protegendo todos os conectores. Uma <strong>caixa organizadora (mini rack)</strong> concentra os equipamentos internamente.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon icon-cyan">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                    </div>
+                    <h3>Cabeamento 100% Cobre</h3>
+                    <p><strong>Cabo de rede UTP puro cobre.</strong><br>Essencial para sistemas PoE — não oxida com facilidade e entrega dados e energia sem perdas, <strong>ideal para o clima litorâneo</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PLANTA DO PROJETO ==================== -->
+    <section id="planta">
+        <div class="container">
+            <span class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                Planta Baixa
+            </span>
+            <h2 class="section-title">Diagrama de Instalação</h2>
+            <p class="section-desc">Planta baixa com a distribuição das câmeras, roteamento de cabos e pontos de infraestrutura.</p>
+
+            <div class="blueprint-wrapper">
+                <div class="blueprint-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    Planta — Vista Superior do Imóvel
+                </div>
+                <div class="blueprint-body">
+                    <img src="planta_projeto.png" alt="Planta baixa do projeto de CFTV com distribuição de câmeras, caixas subterrâneas, eletrodutos e caixa organizadora">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INFRAESTRUTURA ==================== -->
+    <section id="infraestrutura">
+        <div class="container">
+            <span class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Infraestrutura
+            </span>
+            <h2 class="section-title">Distribuição e Metragens</h2>
+            <p class="section-desc">Detalhamento do cabeamento e infraestrutura para cada ponto de câmera.</p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-dot">1</div>
+                    <div>
+                        <h4>Câmera da Frente</h4>
+                        <p>30 metros de cabo de rede (100% cobre) interligados com 10 metros de cano subterrâneo e caixa protetora de ligação.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-dot">2</div>
+                    <div>
+                        <h4>Câmera Corredor Esquerdo (Frente)</h4>
+                        <p>30 metros de cabo de rede (100% cobre) com 25 metros de cano de proteção e caixa protetora de ligação.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-dot">3</div>
+                    <div>
+                        <h4>Câmera Corredor Direito (Fundo)</h4>
+                        <p>25 metros de cabo de rede (100% cobre) blindados por infraestrutura dedicada e caixa protetora de ligação.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-dot">4</div>
+                    <div>
+                        <h4>Câmera do Quintal</h4>
+                        <p>25 metros de cabo de rede (100% cobre) finalizados de forma oculta com caixa de proteção de ligação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DIRETRIZES ==================== -->
+    <section id="diretrizes">
+        <div class="container">
+            <span class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Método de Instalação
+            </span>
+            <h2 class="section-title">Diretrizes de Instalação</h2>
+            <p class="section-desc">Garantia de qualidade visual e operacional em cada etapa.</p>
+
+            <div class="cards-grid cols-2">
+                <div class="card">
+                    <div class="card-icon icon-green">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Passagem Oculta e Protegida</h3>
+                    <p>Roteamento dividido entre trechos <strong>subterrâneos</strong> (com canos de PVC para isolamento máximo) e trechos externos pelo <strong>telhado com eletrodutos</strong>, assegurando <strong>zero fios expostos</strong>.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon icon-violet">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                    </div>
+                    <h3>Centralização Inteligente</h3>
+                    <p>Toda a infraestrutura de cabeamento converge para uma <strong>caixa organizadora na sala de estar</strong>, que abrigará o gravador (NVD) e o roteador Wi-Fi, facilitando o acesso e a manutenção.</p>
+                </div>
+            </div>
+
+            <!-- Highlight -->
+            <div class="highlight-box">
+                <h3>Garantia de Qualidade Visual e Operacional</h3>
+                <p>Este projeto assegura não apenas a vigilância do perímetro com extrema clareza e retenção de até 7 dias, mas a <strong>preservação total da arquitetura da residência</strong>.<br><br><em>Os valores finais do orçamento serão apresentados na etapa seguinte.</em></p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>Projeto de Instalação de CFTV &bull; Icaraí de Amontada, CE &bull; 2025</p>
+    </div>
+</footer>
+
+<!-- Scroll Reveal -->
+<script>
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('section').forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+PROJETO DE INSTALAÇÃO DE CÂMERAS DE SEGURANÇA
+
+1. Objetivo do projeto
+
+Este projeto tem como objetivo realizar a instalação de 04 câmeras de segurança, posicionadas estrategicamente para proporcionar cobertura das áreas frontal, corredor lateral e quintal da residência.
+
+A instalação será executada de forma organizada e protegida, utilizando cabos de rede 100% cobre, conduítes/canos para proteção da infraestrutura e caixas de proteção nas conexões, evitando fios expostos e proporcionando maior segurança e durabilidade ao sistema.
+
+2. Distribuição das câmeras e materiais
+
+📹 Câmera 01 – Área frontal
+
+- 01 câmera de segurança
+- 30 metros de cabo de rede 100% cobre
+- 10 metros de cano/conduíte
+- 01 caixa protetora de ligação
+- Instalação direcionada para monitoramento da área frontal.
+
+📹 Câmera 02 – Corredor esquerdo
+
+- 01 câmera de segurança
+- 30 metros de cabo de rede 100% cobre
+- 25 metros de cano/conduíte
+- 01 caixa protetora de ligação
+- Instalação destinada à cobertura do corredor lateral esquerdo.
+
+📹 Câmera 03 – Corredor direito
+
+- 01 câmera de segurança
+- 25 metros de cabo de rede 100% cobre
+- 01 caixa protetora de ligação
+- Complementará a cobertura do corredor, reduzindo pontos sem visualização.
+
+📹 Câmera 04 – Quintal
+
+- 01 câmera de segurança
+- 25 metros de cabo de rede 100% cobre
+- 01 caixa protetora de ligação
+- Instalação direcionada para monitoramento do quintal e área posterior.
+
+3. Central de organização
+
+Será instalada 01 caixa organizadora, localizada na sala de estar, destinada à organização e proteção dos equipamentos e cabeamento do sistema.
+
+A caixa terá a função de acomodar de maneira organizada:
+
+- DVR;
+- Fonte de alimentação das câmeras;
+- Organização das conexões e cabos;
+- Equipamentos necessários ao sistema;
+- Roteador Wi-Fi já existente na residência, que será acomodado dentro da estrutura de organização.
+
+A proposta é manter todos os equipamentos centralizados, protegidos e com acabamento organizado.
+
+4. Quantitativo geral de materiais
+
+Material| Quantidade
+Câmeras de segurança| 04 unidades
+Cabo de rede 100% cobre| 110 metros
+Cano/conduíte| 35 metros
+Caixa protetora de ligação| 04 unidades
+Caixa organizadora para DVR/equipamentos| 01 unidade
+DVR| 01 unidade
+Fonte para câmeras| 01 unidade
+Roteador Wi-Fi| 01 unidade existente
+
+Resumo dos cabos
+
+30 m + 30 m + 25 m + 25 m = 110 metros de cabo de rede 100% cobre.
+
+Resumo dos conduítes
+
+10 m + 25 m = 35 metros de cano/conduíte.
+
+5. Acabamento e proteção
+
+Todo o cabeamento será instalado de maneira protegida, priorizando a utilização de cano/conduíte e caixas de proteção nas conexões.
+
+A proposta prevê que não fique cabo exposto, proporcionando um acabamento mais limpo, profissional e seguro.
+
+A infraestrutura seguirá o trajeto indicado no projeto, com os pontos de passagem definidos conforme a disposição da residência.
+
+6. Resultado esperado
+
+Ao final da instalação, a residência contará com um sistema de 04 câmeras, distribuídas estrategicamente para ampliar a área de monitoramento, com cabeamento protegido e equipamentos centralizados na sala de estar.
+
+O projeto foi elaborado buscando unir segurança, organização, proteção do cabeamento, facilidade de manutenção e bom acabamento visual.
