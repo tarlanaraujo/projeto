@@ -384,6 +384,145 @@
             font-weight: 500;
         }
 
+        /* ========== SHOPPING / CART SECTION ========== */
+        .shop-section {
+            margin-top: 2.5rem;
+        }
+        .shop-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(251,191,36,0.2);
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+        .shop-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid rgba(251,191,36,0.12);
+            background: rgba(251,191,36,0.04);
+        }
+        .shop-header-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: rgba(251,191,36,0.12);
+            color: #FBBF24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .shop-header-text h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-white);
+            line-height: 1.2;
+        }
+        .shop-header-text p {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .shop-body {
+            padding: 1rem 1.2rem;
+        }
+        .shop-items {
+            display: grid;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .shop-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.65rem 0.8rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
+        }
+        .shop-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .shop-item-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(16,185,129,0.15);
+            color: var(--accent-emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .shop-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .shop-item-info strong {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+        .shop-item-info span {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+        }
+        .shop-item-qty {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            background: rgba(6,182,212,0.1);
+            padding: 0.15rem 0.55rem;
+            border-radius: 50px;
+            flex-shrink: 0;
+        }
+        .shop-cta-wrapper {
+            text-align: center;
+            padding-top: 0.25rem;
+        }
+        .shop-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, #FBBF24, #F59E0B);
+            color: #1F2937;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: ctaPulse 3s ease-in-out infinite;
+        }
+        .shop-cta:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(251,191,36,0.35);
+        }
+        .shop-cta svg { flex-shrink: 0; }
+        .shop-cta-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 0.75rem;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,0.3); }
+            50% { box-shadow: 0 0 0 10px rgba(251,191,36,0); }
+        }
+
         /* ========== FOOTER ========== */
         footer {
             text-align: center;
@@ -420,6 +559,8 @@
             .card-icon { width: 56px; height: 56px; }
             .feature-item { padding: 1.25rem 1.5rem; }
             .highlight-box { padding: 2.5rem 2rem; }
+            .shop-body { padding: 1.5rem 2rem; }
+            .shop-cta { padding: 0.9rem 2.2rem; font-size: 1rem; }
         }
 
         /* ========== RESPONSIVE: DESKTOP ========== */
@@ -631,6 +772,82 @@
                     </div>
                     <h3>Centralização Inteligente</h3>
                     <p>Toda a infraestrutura de cabeamento converge para uma <strong>caixa organizadora na sala de estar</strong>, que abrigará o gravador (NVD) e o roteador Wi-Fi, facilitando o acesso e a manutenção.</p>
+                </div>
+            </div>
+
+            <!-- Shopping / Materiais -->
+            <div class="shop-section">
+                <div class="shop-card">
+                    <div class="shop-header">
+                        <div class="shop-header-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        </div>
+                        <div class="shop-header-text">
+                            <h3>Materiais para Aquisição</h3>
+                            <p>Itens já selecionados no Mercado Livre</p>
+                        </div>
+                    </div>
+                    <div class="shop-body">
+                        <div class="shop-items">
+                            <div class="shop-item">
+                                <div class="shop-item-check">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="shop-item-info">
+                                    <strong>Kit Intelbras 4 Câmeras IP Full HD PoE — NVD 1404-P</strong>
+                                    <span>Câmeras + Gravador + HD WD Purple 1 TB</span>
+                                </div>
+                                <div class="shop-item-qty">1x</div>
+                            </div>
+                            <div class="shop-item">
+                                <div class="shop-item-check">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="shop-item-info">
+                                    <strong>Caixas de Passagem VBOX Herméticas</strong>
+                                    <span>Proteção contra maresia e chuva</span>
+                                </div>
+                            </div>
+                            <div class="shop-item">
+                                <div class="shop-item-check">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="shop-item-info">
+                                    <strong>Cabo de Rede UTP 100% Cobre</strong>
+                                    <span>Essencial para tecnologia PoE</span>
+                                </div>
+                            </div>
+                            <div class="shop-item">
+                                <div class="shop-item-check">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="shop-item-info">
+                                    <strong>Caixa Organizadora (Mini Rack)</strong>
+                                    <span>Centralização dos equipamentos</span>
+                                </div>
+                            </div>
+                            <div class="shop-item">
+                                <div class="shop-item-check">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div class="shop-item-info">
+                                    <strong>Canos PVC e Eletrodutos</strong>
+                                    <span>Infraestrutura subterrânea e externa</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shop-cta-wrapper">
+                            <a href="https://www.mercadolivre.com.br/gz/cart/v2/shared-cart?key=7caacf334dd7db9276e15afb78071e6385d22599bfd93d0e8c5d0f3a322088e4&matt_tool=38524122&ua=iJ2JBe-kwQy2e6F0Y5vSuAoJDr2E5hNAKQih55mFeEnCwWEs#action=whatsapp" target="_blank" rel="noopener noreferrer" class="shop-cta">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Ver Carrinho no Mercado Livre
+                            </a>
+                            <p class="shop-cta-note">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Abre diretamente no app ou site do Mercado Livre
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
